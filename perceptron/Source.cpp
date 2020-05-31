@@ -73,7 +73,7 @@ const double moment = 0.01; // Moment
 
 
 double Syn[10]; // synapse weights
-double Hinput = 0, Houtput = 0, W[1000][10000], err = 0, delta, Delta; // Variable initialization
+double Hinput = 0, Houtput = 0, W[10000], err = 0, delta, Delta; // Variable initialization
 
 int main() {
 
@@ -107,8 +107,8 @@ int main() {
 				else {
 					Delta = GRAD(delta, arrTraining[i][j]);
 				}
-				W[i][j] = WeightUpdate(speed, Delta, moment, W[i][j - 1], j);
-				Syn[j] += W[i][j];
+				W[j] = WeightUpdate(speed, Delta, moment, W[j - 1], j);
+				Syn[j] += W[j];
 			}
 		}
 	}
